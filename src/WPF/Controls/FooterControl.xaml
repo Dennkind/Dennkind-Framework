@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Dennkind.Framework.WPF.Controls.FooterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dennkind.Framework.WPF.Controls"
+             mc:Ignorable="d">
+    <Grid x:Name="mainGrid" Height="40">
+
+        <Canvas x:Name="backgroundCanvas" Background="#FF1E1E1E">
+            <Canvas.Effect>
+                <DropShadowEffect Color="#FFBFBFBF" ShadowDepth="1"/>
+            </Canvas.Effect>
+        </Canvas>
+
+        <Grid x:Name="contentGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <Label x:Name="versionLabel" Grid.Column="0" Content="Version Label" Foreground="Silver"
+                   Padding="24,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
+
+            <Label x:Name="copyrightLabel" Grid.Column="2" Content="Copyright Label" Foreground="Silver"
+                   Padding="24,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+        </Grid>
+    </Grid>
+</UserControl>

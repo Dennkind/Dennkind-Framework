@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Dennkind.Framework.WPF.Controls.NavigationItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dennkind.Framework.WPF.Controls"
+             mc:Ignorable="d">
+    <Grid x:Name="mainGrid" Height="40">
+
+        <Canvas x:Name="backgroundCanvas" Background="WhiteSmoke" />
+        <Canvas x:Name="isActiveCanvas" Background="#CCC0C0C0" Visibility="Collapsed" />
+        <Canvas x:Name="mouseEnterCanvas" Background="#66C0C0C0" Visibility="Collapsed" />
+
+        <Grid x:Name="contentGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="64" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="iconImage" Width="24" 
+               Source="/Dennkind.Framework;component/Resources/placeholder_Icon_001_128x128.png" />
+
+            <Label x:Name="titleLabel" Grid.Column="1" Content="Title Label" FontFamily="Segoe Ui" FontSize="14"
+               VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
+        </Grid>
+    </Grid>
+</UserControl>
