@@ -174,7 +174,7 @@ namespace Dennkind.Framework.WPF.Controls
         /// </summary>
         public void Expand()
         {
-            // check if animation is not in progress nor the navigation is already expanded
+            // check if animation is not in progress and the navigation is not already expanded
             if (_isAnimationInProgress || !_isCollapsed)
                 return;
 
@@ -195,7 +195,7 @@ namespace Dennkind.Framework.WPF.Controls
         /// </summary>
         public void Collapse()
         {
-            // check if animation is not in progress nor the navigation is already collapsed
+            // check if animation is not in progress and the navigation is not already collapsed
             if (_isAnimationInProgress || _isCollapsed)
                 return;
 
@@ -224,8 +224,8 @@ namespace Dennkind.Framework.WPF.Controls
                 _collapseStoryboard.Stop();
             }
 
-            // check and apply isCollapsed value
-            if (_isCollapsed)
+            // check and apply the IsCollapsed state
+            if (IsCollapsed)
                 Width = _collapsedWidth;
             else
                 Width = _expandedWidth;

@@ -23,12 +23,20 @@
  * SOFTWARE.
  */
 
+using System;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace Dennkind.Framework.WPF.Controls
 {
     public partial class HeaderControl : UserControl
     {
+        private bool _isShown = true;
+        private bool _isAnimationInProgress = false;
+
+        private Storyboard _fadeInStoryboard;
+        private Storyboard _fadeOutStoryboard;
+
         /// <summary>
         /// Gets or sets the logo.
         /// </summary>
@@ -48,11 +56,87 @@ namespace Dennkind.Framework.WPF.Controls
         }
 
         /// <summary>
+        /// Gets or sets a value that indicates whether the header is shown
+        /// or hidden.
+        /// </summary>
+        public bool IsShown
+        {
+            get { return _isShown; }
+            set { _isShown = value; ShowOrHide(); }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the Dennkind.Framework.WPF.Controls.HeaderControl class.
         /// </summary>
         public HeaderControl()
         {
             InitializeComponent();
+
+            // initialize storyboards
+            _fadeInStoryboard = (Storyboard)FindResource("FadeInStoryboard");
+            _fadeInStoryboard.Completed += new EventHandler((sender, e) =>
+            {
+                _isShown = true;
+                _isAnimationInProgress = false;
+            });
+
+            _fadeOutStoryboard = (Storyboard)FindResource("FadeOutStoryboard");
+            _fadeOutStoryboard.Completed += new EventHandler((sender, e) =>
+            {
+                _isShown = false;
+                _isAnimationInProgress = false;
+            });
+        }
+
+        /// <summary>
+        /// Fades the header in.
+        /// </summary>
+        public void FadeIn()
+        {
+            // check if animation is not in progress and the header is not already shown
+            if (_isAnimationInProgress || _isShown)
+                return;
+
+            // indicate that the animation is in progress
+            _isAnimationInProgress = true;
+
+            // begin the animation
+            _fadeInStoryboard.Begin(this, true);
+        }
+
+        /// <summary>
+        /// Fades the header out.
+        /// </summary>
+        public void FadeOut()
+        {
+            // check if animation is not in progress and the header is not already hidden
+            if (_isAnimationInProgress || !_isShown)
+                return;
+
+            // indicate that the animation is in progress
+            _isAnimationInProgress = true;
+
+            // begin the animation
+            _fadeOutStoryboard.Begin(this, true);
+        }
+
+        /// <summary>
+        /// Shows or hides the header depending on the IsShown property.
+        /// </summary>
+        private void ShowOrHide()
+        {
+            // stop storyboards if active
+            if (_isAnimationInProgress)
+            {
+                _fadeInStoryboard.Stop();
+                _fadeOutStoryboard.Stop();
+            }
+
+            // check and apply the IsShown state
+            if (IsShown)
+                mainGrid.Height = 60;
+            else
+                mainGrid.Height = 0;
         }
     }
 }

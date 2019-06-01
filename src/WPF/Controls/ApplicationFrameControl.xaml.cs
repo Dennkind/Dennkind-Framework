@@ -73,6 +73,15 @@ namespace Dennkind.Framework.WPF.Controls
         }
 
         /// <summary>
+        /// Exposes the header control.
+        /// </summary>
+        public HeaderControl Header
+        {
+            get { return headerControl; }
+            private set { headerControl = value; }
+        }
+
+        /// <summary>
         /// Exposes the navigation control.
         /// </summary>
         public NavigationControl Navigation
