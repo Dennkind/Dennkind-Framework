@@ -78,7 +78,6 @@ namespace Dennkind.Framework.WPF.Controls
         public HeaderControl Header
         {
             get { return headerControl; }
-            private set { headerControl = value; }
         }
 
         /// <summary>
@@ -87,7 +86,14 @@ namespace Dennkind.Framework.WPF.Controls
         public NavigationControl Navigation
         {
             get { return navigationControl; }
-            private set { navigationControl = value; }
+        }
+
+        /// <summary>
+        /// Exposes the footer control.
+        /// </summary>
+        public FooterControl Footer
+        {
+            get { return footerControl; }
         }
 
         /// <summary>
