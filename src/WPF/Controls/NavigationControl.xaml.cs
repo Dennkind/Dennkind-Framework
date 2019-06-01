@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace Dennkind.Framework.WPF.Controls
 {
@@ -41,14 +42,67 @@ namespace Dennkind.Framework.WPF.Controls
         private bool _isAnimationInProgress = false;
         private bool _isCollapsed = true;
 
+        private Storyboard _expandStoryboard;
+        private Storyboard _collapseStoryboard;
+
+        private int _collapsedWidth;
+        private int _expandedWidth;
+
         private List<NavigationItemControl> _navigationItemControls;
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether the navigation
+        /// is collapsed or expanded.
+        /// </summary>
+        public bool IsCollapsed
+        {
+            get { return _isCollapsed; }
+            set { _isCollapsed = value; ExpandOrCollapse(); }
+        }
+
+        /// <summary>
+        /// Gets or sets the default width for the collapsed state.
+        /// </summary>
+        public int CollapsedWidth
+        {
+            get { return _collapsedWidth; }
+            set { _collapsedWidth = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the default width for the expanded state.
+        /// </summary>
+        public int ExpandedWidth
+        {
+            get { return _expandedWidth; }
+            set { _expandedWidth = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the Dennkind.Framework.WPF.Controls.NavigationControl class.
         /// </summary>
-        public NavigationControl()
+                public NavigationControl()
         {
             InitializeComponent();
+
+            // initialize storyboards
+            _expandStoryboard = (Storyboard)FindResource("ExpandStoryboard");
+            _expandStoryboard.Completed += new EventHandler((sender, e) =>
+            {
+                _isAnimationInProgress = false;
+                _isCollapsed = false;
+            });
+
+            _collapseStoryboard = (Storyboard)FindResource("CollapseStoryboard");
+            _collapseStoryboard.Completed += new EventHandler((sender, e) =>
+            {
+                _isAnimationInProgress = false;
+                _isCollapsed = true;
+            });
+
+            // set default values
+            _collapsedWidth = 64;
+            _expandedWidth = 260;
 
             // initialize the navigation items list
             _navigationItemControls = new List<NavigationItemControl>();
@@ -120,12 +174,20 @@ namespace Dennkind.Framework.WPF.Controls
         /// </summary>
         public void Expand()
         {
+            // check if animation is not in progress nor the navigation is already expanded
             if (_isAnimationInProgress || !_isCollapsed)
                 return;
 
-            //todo: implement animation
-            mainGrid.Width = 200;
-            _isCollapsed = false;
+            // apply default values to animation
+            var expandAnimation = (DoubleAnimationUsingKeyFrames)_expandStoryboard.Children[0];
+            expandAnimation.KeyFrames[0].Value = _collapsedWidth;
+            expandAnimation.KeyFrames[1].Value = _expandedWidth;
+
+            // indicate that the animation is in progress
+            _isAnimationInProgress = true;
+
+            // begin the animation
+            _expandStoryboard.Begin(this, true);
         }
 
         /// <summary>
@@ -133,12 +195,40 @@ namespace Dennkind.Framework.WPF.Controls
         /// </summary>
         public void Collapse()
         {
+            // check if animation is not in progress nor the navigation is already collapsed
             if (_isAnimationInProgress || _isCollapsed)
                 return;
 
-            //todo: implement animation
-            mainGrid.Width = 64;
-            _isCollapsed = true;
+            // apply default values to animation
+            var collapseAnimation = (DoubleAnimationUsingKeyFrames)_expandStoryboard.Children[0];
+            collapseAnimation.KeyFrames[0].Value = _expandedWidth;
+            collapseAnimation.KeyFrames[1].Value = _collapsedWidth;
+
+            // indicate that the animation is in progress
+            _isAnimationInProgress = true;
+
+            // begin the animation
+            _collapseStoryboard.Begin(this, true);
+        }
+
+        /// <summary>
+        /// Expands or collapses the navigation depending on the
+        /// IsCollapsed property.
+        /// </summary>
+        private void ExpandOrCollapse()
+        {
+            // stop storyboards if active
+            if (_isAnimationInProgress)
+            {
+                _expandStoryboard.Stop();
+                _collapseStoryboard.Stop();
+            }
+
+            // check and apply isCollapsed value
+            if (_isCollapsed)
+                Width = _collapsedWidth;
+            else
+                Width = _expandedWidth;
         }
 
         /// <summary>

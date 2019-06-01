@@ -73,6 +73,15 @@ namespace Dennkind.Framework.WPF.Controls
         }
 
         /// <summary>
+        /// Exposes the navigation control.
+        /// </summary>
+        public NavigationControl Navigation
+        {
+            get { return navigationControl; }
+            private set { navigationControl = value; }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the Dennkind.Framework.WPF.Controls.ApplicationFrameControl class.
         /// </summary>
         public ApplicationFrameControl()

@@ -5,6 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Dennkind.Framework.WPF.Controls"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <Storyboard x:Key="ExpandStoryboard">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="mainGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="64">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CollapseStoryboard">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="mainGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="260">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="64">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
     <Grid x:Name="mainGrid" Width="64">
 
         <Canvas x:Name="backgroundCanvas" Background="WhiteSmoke" />
@@ -14,7 +44,7 @@
                 <RowDefinition Height="64" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            
+
             <Grid x:Name="haburgerMenuIconWrapperGrid" Width="64" HorizontalAlignment="Left">
                 <Grid x:Name="haburgerMenuIconGrid" Width="24" Height="24" Cursor="Hand" Background="WhiteSmoke"
                       Margin="0,12" VerticalAlignment="Top" HorizontalAlignment="Center">
