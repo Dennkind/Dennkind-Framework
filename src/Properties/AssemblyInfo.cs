@@ -8,4 +8,4 @@ using System.Windows;
 [assembly: AssemblyCopyright("Copyright © Lukas Koch 2019")]
 [assembly: ComVisible(false)]
 [assembly:ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
-[assembly: AssemblyVersion("1.0.11")]
+[assembly: AssemblyVersion("1.0.13")]

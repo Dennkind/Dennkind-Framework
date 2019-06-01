@@ -39,9 +39,12 @@ namespace Dennkind.Framework.WPF.Controls
         /// </summary>
         public event EventHandler<NavigationItemControl> NavigationItemClicked;
 
-        private bool _isAnimationInProgress = false;
+        private bool _isShown = true;
         private bool _isCollapsed = true;
+        private bool _isAnimationInProgress = false;
 
+        private Storyboard _fadeInStoryboard;
+        private Storyboard _fadeOutStoryboard;
         private Storyboard _expandStoryboard;
         private Storyboard _collapseStoryboard;
 
@@ -58,6 +61,16 @@ namespace Dennkind.Framework.WPF.Controls
         {
             get { return _isCollapsed; }
             set { _isCollapsed = value; ExpandOrCollapse(); }
+        }
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether the navigation is shown
+        /// or hidden.
+        /// </summary>
+        public bool IsShown
+        {
+            get { return _isShown; }
+            set { _isShown = value; ShowOrHide(); }
         }
 
         /// <summary>
@@ -86,6 +99,21 @@ namespace Dennkind.Framework.WPF.Controls
             InitializeComponent();
 
             // initialize storyboards
+            _fadeInStoryboard = (Storyboard)FindResource("FadeInStoryboard");
+            _fadeInStoryboard.Completed += new EventHandler((sender, e) =>
+            {
+                _isShown = true;
+                _isAnimationInProgress = false;
+            });
+
+            _fadeOutStoryboard = (Storyboard)FindResource("FadeOutStoryboard");
+            _fadeOutStoryboard.Completed += new EventHandler((sender, e) =>
+            {
+                _isShown = false;
+                _isCollapsed = true;
+                _isAnimationInProgress = false;
+            });
+
             _expandStoryboard = (Storyboard)FindResource("ExpandStoryboard");
             _expandStoryboard.Completed += new EventHandler((sender, e) =>
             {
@@ -170,6 +198,38 @@ namespace Dennkind.Framework.WPF.Controls
         }
 
         /// <summary>
+        /// Fades the navigation in.
+        /// </summary>
+        public void FadeIn()
+        {
+            // check if animation is not in progress and the header is not already shown
+            if (_isAnimationInProgress || _isShown)
+                return;
+
+            // indicate that the animation is in progress
+            _isAnimationInProgress = true;
+
+            // begin the animation
+            _fadeInStoryboard.Begin(this, true);
+        }
+
+        /// <summary>
+        /// Fades the navigation out.
+        /// </summary>
+        public void FadeOut()
+        {
+            // check if animation is not in progress and the header is not already hidden
+            if (_isAnimationInProgress || !_isShown)
+                return;
+
+            // indicate that the animation is in progress
+            _isAnimationInProgress = true;
+
+            // begin the animation
+            _fadeOutStoryboard.Begin(this, true);
+        }
+
+        /// <summary>
         /// Expands the navigation area.
         /// </summary>
         public void Expand()
@@ -229,6 +289,25 @@ namespace Dennkind.Framework.WPF.Controls
                 Width = _collapsedWidth;
             else
                 Width = _expandedWidth;
+        }
+
+        /// <summary>
+        /// Shows or hides the navigation depending on the IsShown property.
+        /// </summary>
+        private void ShowOrHide()
+        {
+            // stop storyboards if active
+            if (_isAnimationInProgress)
+            {
+                _fadeInStoryboard.Stop();
+                _fadeOutStoryboard.Stop();
+            }
+
+            // check and apply the IsShown state
+            if (IsShown)
+                mainGrid.Width = _collapsedWidth;
+            else
+                mainGrid.Width = 0;
         }
 
         /// <summary>
