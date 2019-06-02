@@ -89,6 +89,14 @@ namespace Dennkind.Framework.WPF.Controls
         }
 
         /// <summary>
+        /// Exposes the content control.
+        /// </summary>
+        public new ContentControl Content
+        {
+            get { return contentControl; }
+        }
+
+        /// <summary>
         /// Exposes the footer control.
         /// </summary>
         public FooterControl Footer
