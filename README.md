@@ -24,6 +24,9 @@
 5. Display any page by using the name:<br />
 <code>applicationFrameControl.DisplayPage("dashboardPage");</code>
 
+## Demo App
+Try the demo app: [Dennkind Framework Demo App](https://github.com/Dennkind/Dennkind-Framework-Demo)
+
 ## NuGet Packages
 Consume the [Dennkind Framework as NuGet](https://www.nuget.org/packages/Dennkind.Framework/1.0.0):<br />
 
