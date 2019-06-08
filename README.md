@@ -24,16 +24,25 @@
 5. Display any page by using the name:<br />
 <code>applicationFrameControl.DisplayPage("dashboardPage");</code>
 
+## Demo App
+Try the demo app: [Dennkind Framework Demo App](https://github.com/Dennkind/Dennkind-Framework-Demo)
+
 ## NuGet Packages
-Consume the Dennkind Framework as NuGet:<br />
+Consume the [Dennkind Framework as NuGet](https://www.nuget.org/packages/Dennkind.Framework/1.0.0):<br />
+
+### Version 1.0.0 (Release):
 https://www.nuget.org/packages/Dennkind.Framework/1.0.0
 
-## Version 1.0.0 (Release) contains:
+## Changelog:
+### Version 1.1.0 (Release) [In Progress](https://github.com/Dennkind/Dennkind-Framework/projects/2):
+- Animations added to the header, navigation, content and footer controls.
+
+### Version 1.0.0 (Release):
 - ApplicationFrameControl
 - HeaderControl
 - NavigationControl
 - ContentControl
 - FooterControl
 
-## Follow the development process:
+## Dennkind Framework Trello Board:
 - [link to Dennkind Framework Trello Board](https://trello.com/b/RbvKbD10/dennkind-framework) 
