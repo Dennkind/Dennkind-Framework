@@ -1,8 +1,7 @@
 # Dennkind-Framework
 
 ## Description
-<b>The Dennkind Framework library provides frame and navigation controls for WPF applications.</b><br /><br />
-![alt text](http://kronos-server.online/files/dennkindFrameworkDemoApp.png)
+<b>The Dennkind Framework library provides animated frame and navigation controls for WPF applications.</b>
 
 ## Usage
 1. Add the Dennkind.Framework.WPF.Controls namespace:<br />
@@ -24,17 +23,36 @@
 5. Display any page by using the name:<br />
 <code>applicationFrameControl.DisplayPage("dashboardPage");</code>
 
+### Animations 
+Hide controls on startup by setting the IsShown property to false:
+applicationFrameControl.Header.IsShown = false;
+applicationFrameControl.Footer.IsShown = false;
+applicationFrameControl.Content.IsShown = false;
+applicationFrameControl.Navigation.IsShown = false;
+
+Display controls by calling the FadeIn method:
+applicationFrameControl.Header.FadeIn();
+applicationFrameControl.Footer.FadeIn();
+applicationFrameControl.Content.FadeIn();
+applicationFrameControl.Navigation.FadeIn();
+
+Hide the controls by calling the FadeOut method:
+applicationFrameControl.Header.FadeOut();
+applicationFrameControl.Footer.FadeOut();
+applicationFrameControl.Content.FadeOut();
+applicationFrameControl.Navigation.FadeOut();
+
 ## Demo App
 Try the demo app: [Dennkind Framework Demo App](https://github.com/Dennkind/Dennkind-Framework-Demo)
 
 ## NuGet Packages
-Consume the [Dennkind Framework as NuGet](https://www.nuget.org/packages/Dennkind.Framework/1.0.0):<br />
+Consume the [Dennkind Framework as NuGet](https://www.nuget.org/packages/Dennkind.Framework/1.1.0):<br />
 
-### Version 1.0.0 (Release):
-https://www.nuget.org/packages/Dennkind.Framework/1.0.0
+### Version 1.1.0 (Release):
+https://www.nuget.org/packages/Dennkind.Framework/1.1.0
 
 ## Changelog:
-### Version 1.1.0 (Release) [In Progress](https://github.com/Dennkind/Dennkind-Framework/projects/2):
+### Version 1.1.0 (Release):
 - Animations added to the header, navigation, content and footer controls.
 
 ### Version 1.0.0 (Release):
