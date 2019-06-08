@@ -286,9 +286,9 @@ namespace Dennkind.Framework.WPF.Controls
 
             // check and apply the IsCollapsed state
             if (IsCollapsed)
-                Width = _collapsedWidth;
+                mainGrid.Width = _collapsedWidth;
             else
-                Width = _expandedWidth;
+                mainGrid.Width = _expandedWidth;
         }
 
         /// <summary>
