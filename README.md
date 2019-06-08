@@ -3,6 +3,8 @@
 ## Description
 <b>The Dennkind Framework library provides animated frame and navigation controls for WPF applications.</b>
 
+![Dennkind Framework Demo App](http://www.dennkind.com/files/dennkindFrameworkDemoApp.png)
+
 ## Usage
 1. Add the Dennkind.Framework.WPF.Controls namespace:<br />
 <code>xmlns:dennkind="clr-namespace:Dennkind.Framework.WPF.Controls;assembly=Dennkind.Framework</code>
@@ -25,22 +27,22 @@
 
 ### Animations 
 Hide controls on startup by setting the IsShown property to false:
-applicationFrameControl.Header.IsShown = false;
-applicationFrameControl.Footer.IsShown = false;
-applicationFrameControl.Content.IsShown = false;
-applicationFrameControl.Navigation.IsShown = false;
+<code>applicationFrameControl.Header.IsShown = false;</code><br />
+<code>applicationFrameControl.Footer.IsShown = false;</code><br />
+<code>applicationFrameControl.Content.IsShown = false;</code><br />
+<code>applicationFrameControl.Navigation.IsShown = false;</code><br />
 
 Display controls by calling the FadeIn method:
-applicationFrameControl.Header.FadeIn();
-applicationFrameControl.Footer.FadeIn();
-applicationFrameControl.Content.FadeIn();
-applicationFrameControl.Navigation.FadeIn();
+<code>applicationFrameControl.Header.FadeIn();</code><br />
+<code>applicationFrameControl.Footer.FadeIn();</code><br />
+<code>applicationFrameControl.Content.FadeIn();</code><br />
+<code>applicationFrameControl.Navigation.FadeIn();</code><br />
 
 Hide the controls by calling the FadeOut method:
-applicationFrameControl.Header.FadeOut();
-applicationFrameControl.Footer.FadeOut();
-applicationFrameControl.Content.FadeOut();
-applicationFrameControl.Navigation.FadeOut();
+<code>applicationFrameControl.Header.FadeOut();</code><br />
+<code>applicationFrameControl.Footer.FadeOut();</code><br /></code><br />
+<code>applicationFrameControl.Content.FadeOut();</code><br />
+<code>applicationFrameControl.Navigation.FadeOut();</code><br />
 
 ## Demo App
 Try the demo app: [Dennkind Framework Demo App](https://github.com/Dennkind/Dennkind-Framework-Demo)
