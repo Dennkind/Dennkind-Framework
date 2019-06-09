@@ -30,5 +30,7 @@
         <local:HeaderControl x:Name="headerControl" Grid.Row="0" />
 
         <local:FooterControl x:Name="footerControl" Grid.Row="2" />
+        
+        <local:SplashscreenControl x:Name="splashscreenControl" Grid.RowSpan="3" />
     </Grid>
 </UserControl>
