@@ -79,6 +79,9 @@
     <Compile Include="WPF\Controls\NavigationItemControl.xaml.cs">
       <DependentUpon>NavigationItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPF\Controls\OverlayControl.xaml.cs">
+      <DependentUpon>OverlayControl.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WPF\Controls\NavigationItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\Controls\OverlayControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -97,6 +97,14 @@ namespace Dennkind.Framework.WPF.Controls
         }
 
         /// <summary>
+        /// Exposes the overlay control.
+        /// </summary>
+        public OverlayControl Overlay
+        {
+            get { return overlayControl; }
+        }
+
+        /// <summary>
         /// Exposes the footer control.
         /// </summary>
         public FooterControl Footer
@@ -159,6 +167,33 @@ namespace Dennkind.Framework.WPF.Controls
 
             // activate the navigation item
             navigationControl.ActivateNavigationItem(pageNavigationItem.Value);
+        }
+
+        /// <summary>
+        /// Displays the overlay with the given content.
+        /// </summary>
+        /// <param name="content"></param>
+        public void DisplayOverlay(object content)
+        {
+            // display the overlay
+            overlayControl.Display(content);
+
+            // disable the other controls
+            navigationControl.IsEnabled = false;
+            contentControl.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Hides the overlay.
+        /// </summary>
+        public void HideOverlay()
+        {
+            // hide the overlay
+            overlayControl.Hide();
+
+            // enable the other controls
+            navigationControl.IsEnabled = true;
+            contentControl.IsEnabled = true;
         }
     }
 }

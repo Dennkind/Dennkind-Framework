@@ -25,6 +25,8 @@
             <local:ContentControl x:Name="contentControl" Grid.Column="1" />
         </Grid>
 
+        <local:OverlayControl x:Name="overlayControl" Grid.Row="1" />
+
         <local:HeaderControl x:Name="headerControl" Grid.Row="0" />
 
         <local:FooterControl x:Name="footerControl" Grid.Row="2" />
