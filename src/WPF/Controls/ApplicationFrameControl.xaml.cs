@@ -23,11 +23,11 @@
  * SOFTWARE.
  */
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Linq;
-using System;
 
 namespace Dennkind.Framework.WPF.Controls
 {
@@ -113,6 +113,14 @@ namespace Dennkind.Framework.WPF.Controls
         }
 
         /// <summary>
+        /// Exposes the splashscreen control.
+        /// </summary>
+        public SplashscreenControl Splashscreen
+        {
+            get { return splashscreenControl; }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the Dennkind.Framework.WPF.Controls.ApplicationFrameControl class.
         /// </summary>
         public ApplicationFrameControl()
@@ -134,12 +142,29 @@ namespace Dennkind.Framework.WPF.Controls
                 // activate the navigation item
                 navigationControl.ActivateNavigationItem(pageNavigationItem.Value);
             });
+
+            splashscreenControl.SplashscreenHidden += new EventHandler((sender, e) =>
+            {
+                Header.FadeIn();
+                Navigation.FadeIn();
+                Content.FadeIn();
+                Footer.FadeIn();
+            });
         }
 
         /// <summary>
         /// Adds a page and a navigation item.
         /// </summary>
-        /// <param name="page">Page</param>
+        /// <param name="page">Page (Name and Title property must be set)</param>
+        public void AddPage(Page page)
+        {
+            AddPage(page, null);
+        }
+
+        /// <summary>
+        /// Adds a page and a navigation item.
+        /// </summary>
+        /// <param name="page">Page (Name and Title property must be set)</param>
         /// <param name="icon">Navigation item icon</param>
         public void AddPage(Page page, ImageSource icon)
         {
@@ -181,6 +206,41 @@ namespace Dennkind.Framework.WPF.Controls
             // disable the other controls
             navigationControl.IsEnabled = false;
             contentControl.IsEnabled = false;
+        }
+
+        public void DisplayDialog(string title, string message)
+        {
+            var dialogControl = new DialogControl();
+            dialogControl.OkButtonClicked += new EventHandler((sender, e) =>
+            {
+                HideOverlay();
+            });
+            dialogControl.Display(title, message);
+
+            overlayControl.Display(dialogControl);
+
+            // disable the other controls
+            navigationControl.IsEnabled = false;
+            contentControl.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Displays the splashscreen with the given content.
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="showTime">The time the splashscreen is shown</param>
+        public void DisplaySplashscreen(object content, TimeSpan showTime)
+        {
+            // hide all other controls
+            Splashscreen.IsShown = true;
+            Header.IsShown = false;
+            Navigation.IsShown = false;
+            Content.IsShown = false;
+            Footer.IsShown = false;;
+
+            // initialize the splashscreen
+            Splashscreen.Content = content;
+            Splashscreen.FadeOut(showTime);
         }
 
         /// <summary>

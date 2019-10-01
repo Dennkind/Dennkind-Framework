@@ -13,12 +13,14 @@
 
         <Grid x:Name="contentGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="64" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="iconImage" Width="24" 
-               Source="/Dennkind.Framework;component/Resources/placeholder_Icon_001_128x128.png" />
+            <Grid x:Name="iconGrid" Width="64">
+                <Image x:Name="iconImage" Width="24" 
+                       Source="/Dennkind.Framework;component/Resources/placeholder_Icon_001_128x128.png" />
+            </Grid>
 
             <Label x:Name="titleLabel" Grid.Column="1" Content="Title Label" FontFamily="Segoe Ui" FontSize="14"
                VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
