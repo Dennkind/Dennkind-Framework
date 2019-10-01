@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Dennkind.Framework.WPF.Controls.ProgressControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:local="clr-namespace:Dennkind.Framework.WPF.Controls">
+    <UserControl.Resources>
+        <Storyboard x:Key="SpinnAnimationStoryboard" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="arc">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="arc1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="arc2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="360"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="arc3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="360"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid x:Name="mainGrid" Grid.Row="1" Height="48" Width="48">
+        <ed:Arc x:Name="arc" ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="90" Fill="#FF046785" Margin="0" Stretch="None" Stroke="#FF046785" StartAngle="0" StrokeThickness="5" RenderTransformOrigin="0.5,0.5">
+            <ed:Arc.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ed:Arc.RenderTransform>
+        </ed:Arc>
+        <ed:Arc x:Name="arc1" ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="275" Fill="#FF046785" Margin="0" Stretch="None" Stroke="#FF046785" StartAngle="180" StrokeThickness="5" RenderTransformOrigin="0.5,0.5">
+            <ed:Arc.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ed:Arc.RenderTransform>
+        </ed:Arc>
+        <ed:Arc x:Name="arc2" ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="180" Fill="#FF046785" Margin="8" Stretch="None" Stroke="#FF046785" StartAngle="90" StrokeThickness="2.5" RenderTransformOrigin="0.5,0.5">
+            <ed:Arc.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ed:Arc.RenderTransform>
+        </ed:Arc>
+        <ed:Arc x:Name="arc3" ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#FF046785" Margin="8" Stretch="None" Stroke="#FF046785" StartAngle="275" StrokeThickness="2.5" RenderTransformOrigin="0.5,0.5">
+            <ed:Arc.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ed:Arc.RenderTransform>
+        </ed:Arc>
+    </Grid>
+</UserControl>
