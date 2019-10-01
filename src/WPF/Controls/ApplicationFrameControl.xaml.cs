@@ -155,7 +155,16 @@ namespace Dennkind.Framework.WPF.Controls
         /// <summary>
         /// Adds a page and a navigation item.
         /// </summary>
-        /// <param name="page">Page</param>
+        /// <param name="page">Page (Name and Title property must be set)</param>
+        public void AddPage(Page page)
+        {
+            AddPage(page, null);
+        }
+
+        /// <summary>
+        /// Adds a page and a navigation item.
+        /// </summary>
+        /// <param name="page">Page (Name and Title property must be set)</param>
         /// <param name="icon">Navigation item icon</param>
         public void AddPage(Page page, ImageSource icon)
         {
@@ -193,6 +202,22 @@ namespace Dennkind.Framework.WPF.Controls
         {
             // display the overlay
             overlayControl.Display(content);
+
+            // disable the other controls
+            navigationControl.IsEnabled = false;
+            contentControl.IsEnabled = false;
+        }
+
+        public void DisplayDialog(string title, string message)
+        {
+            var dialogControl = new DialogControl();
+            dialogControl.OkButtonClicked += new EventHandler((sender, e) =>
+            {
+                HideOverlay();
+            });
+            dialogControl.Display(title, message);
+
+            overlayControl.Display(dialogControl);
 
             // disable the other controls
             navigationControl.IsEnabled = false;

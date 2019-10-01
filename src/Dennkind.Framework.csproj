@@ -67,6 +67,9 @@
     <Compile Include="WPF\Controls\ContentControl.xaml.cs">
       <DependentUpon>ContentControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPF\Controls\DialogControl.xaml.cs">
+      <DependentUpon>DialogControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPF\Controls\FooterControl.xaml.cs">
       <DependentUpon>FooterControl.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WPF\Controls\ContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\Controls\DialogControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -40,7 +40,16 @@ namespace Dennkind.Framework.WPF.Controls
         public ImageSource Icon
         {
             get { return iconImage.Source; }
-            set { iconImage.Source = value; }
+            set
+            {
+                // check if icon is set
+                if (value != null)
+                    iconGrid.Width = 64;
+                else
+                    iconGrid.Width = 0;
+
+                iconImage.Source = value;
+            }
         }
 
         /// <summary>
