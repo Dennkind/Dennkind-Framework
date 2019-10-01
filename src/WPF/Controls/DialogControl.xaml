@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Dennkind.Framework.WPF.Controls">
-    <Grid x:Name="mainGrid" Width="480" Height="180" Background="WhiteSmoke">
+    <Grid x:Name="mainGrid" Width="460" Height="220" Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="1*" />
@@ -15,7 +15,7 @@
 
         <Border Grid.Row="1" BorderBrush="Silver" BorderThickness="0,1" SnapsToDevicePixels="True" />
         <ScrollViewer Grid.Row="1" Margin="1" VerticalScrollBarVisibility="Auto" Background="White">
-            <TextBlock x:Name="messageField" Padding="24" />
+            <TextBlock x:Name="messageField" Padding="24" TextWrapping="Wrap" />
         </ScrollViewer>
 
         <Button x:Name="okButton" Grid.Row="2" Content="Ok" Padding="48,4"
