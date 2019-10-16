@@ -33,6 +33,8 @@ namespace Dennkind.Framework.WPF.Controls
 {
     public partial class ApplicationFrameControl : UserControl
     {
+        public event EventHandler SplashscreenHidden;
+
         // contains the page navigation items
         private Dictionary<Page, NavigationItemControl> _pageNavigationItems;
 
@@ -145,10 +147,7 @@ namespace Dennkind.Framework.WPF.Controls
 
             splashscreenControl.SplashscreenHidden += new EventHandler((sender, e) =>
             {
-                Header.FadeIn();
-                Navigation.FadeIn();
-                Content.FadeIn();
-                Footer.FadeIn();
+                OnSplashscreenHidden();
             });
         }
 
@@ -232,13 +231,14 @@ namespace Dennkind.Framework.WPF.Controls
         public void DisplaySplashscreen(object content, TimeSpan showTime)
         {
             // hide all other controls
-            Splashscreen.IsShown = true;
-            Header.IsShown = false;
-            Navigation.IsShown = false;
-            Content.IsShown = false;
-            Footer.IsShown = false;;
+            //Splashscreen.IsShown = true;
+            //Header.IsShown = false;
+            //Navigation.IsShown = false;
+            //Content.IsShown = false;
+            //Footer.IsShown = false;
 
             // initialize the splashscreen
+            Splashscreen.IsShown = true;
             Splashscreen.Content = content;
             Splashscreen.FadeOut(showTime);
         }
@@ -254,6 +254,14 @@ namespace Dennkind.Framework.WPF.Controls
             // enable the other controls
             navigationControl.IsEnabled = true;
             contentControl.IsEnabled = true;
+        }
+
+        /// <summary>
+        /// Is called when the Splashscreen was hidden.
+        /// </summary>
+        protected virtual void OnSplashscreenHidden()
+        {
+            SplashscreenHidden?.Invoke(this, EventArgs.Empty);
         }
     }
 }
