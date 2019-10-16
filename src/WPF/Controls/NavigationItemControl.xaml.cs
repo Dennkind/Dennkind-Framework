@@ -44,11 +44,7 @@ namespace Dennkind.Framework.WPF.Controls
             {
                 // check if icon is set
                 if (value != null)
-                    iconGrid.Width = 64;
-                else
-                    iconGrid.Width = 0;
-
-                iconImage.Source = value;
+                    iconImage.Source = value;
             }
         }
 
