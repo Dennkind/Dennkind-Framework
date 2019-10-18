@@ -243,10 +243,22 @@ namespace Dennkind.Framework.WPF.Controls
             Splashscreen.FadeOut(showTime);
         }
 
+        public void DisplayNotification(ImageSource icon, object content)
+        {
+            notificationControl.Icon = icon;
+            notificationControl.Content = content;
+            notificationControl.FadeIn();
+        }
+
+        public void HideNotification()
+        {
+            notificationControl.FadeOut();
+        }
+
         /// <summary>
         /// Hides the overlay.
         /// </summary>
-        public void HideOverlay()
+            public void HideOverlay()
         {
             // hide the overlay
             overlayControl.Hide();

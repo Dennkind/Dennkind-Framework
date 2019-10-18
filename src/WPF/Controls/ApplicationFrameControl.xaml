@@ -32,5 +32,8 @@
         <local:FooterControl x:Name="footerControl" Grid.Row="2" />
         
         <local:SplashscreenControl x:Name="splashscreenControl" Grid.RowSpan="3" />
+
+        <local:NotificationControl x:Name="notificationControl" Grid.Row="1" Margin="24"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Left" />
     </Grid>
 </UserControl>
