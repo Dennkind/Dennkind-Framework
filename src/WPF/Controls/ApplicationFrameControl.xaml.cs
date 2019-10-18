@@ -34,6 +34,8 @@ namespace Dennkind.Framework.WPF.Controls
     public partial class ApplicationFrameControl : UserControl
     {
         public event EventHandler SplashscreenHidden;
+        public event EventHandler NotificationShown;
+        public event EventHandler NotificationHidden;
 
         // contains the page navigation items
         private Dictionary<Page, NavigationItemControl> _pageNavigationItems;
@@ -149,6 +151,15 @@ namespace Dennkind.Framework.WPF.Controls
             {
                 OnSplashscreenHidden();
             });
+
+            notificationControl.Shown += new EventHandler((sender, e) =>
+            {
+                OnNotificationShown();
+            });
+            notificationControl.Hidden += new EventHandler((sender, e) =>
+            {
+                OnNotificationHidden();
+            });
         }
 
         /// <summary>
@@ -258,7 +269,7 @@ namespace Dennkind.Framework.WPF.Controls
         /// <summary>
         /// Hides the overlay.
         /// </summary>
-            public void HideOverlay()
+        public void HideOverlay()
         {
             // hide the overlay
             overlayControl.Hide();
@@ -274,6 +285,16 @@ namespace Dennkind.Framework.WPF.Controls
         protected virtual void OnSplashscreenHidden()
         {
             SplashscreenHidden?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnNotificationShown()
+        {
+            NotificationShown?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnNotificationHidden()
+        {
+            NotificationHidden?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -25,6 +25,7 @@
 
 namespace Dennkind.Framework.WPF.Controls
 {
+    using System;
     using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Media.Animation;
@@ -34,6 +35,9 @@ namespace Dennkind.Framework.WPF.Controls
     /// </summary>
     public partial class NotificationControl : UserControl
     {
+        public event EventHandler Shown;
+        public event EventHandler Hidden;
+
         private Storyboard _fadeInStoryboard;
         private Storyboard _fadeOutStoryboard;
 
@@ -72,6 +76,8 @@ namespace Dennkind.Framework.WPF.Controls
             {
                 _isAnimationInProgress = false;
                 IsShown = true;
+
+                OnShown();
             });
 
             _fadeOutStoryboard = FindResource("FadeOutStoryboard") as Storyboard;
@@ -79,6 +85,8 @@ namespace Dennkind.Framework.WPF.Controls
             {
                 _isAnimationInProgress = false;
                 IsShown = false;
+
+                OnHidden();
             });
         }
 
@@ -112,6 +120,16 @@ namespace Dennkind.Framework.WPF.Controls
 
             // begin the animation
             _fadeOutStoryboard.Begin();
+        }
+
+        protected virtual void OnShown()
+        {
+            Shown?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnHidden()
+        {
+            Hidden?.Invoke(this, EventArgs.Empty);
         }
     }
 }
