@@ -1,7 +1,7 @@
 # Dennkind-Framework
 
 ## Description
-<b>The Dennkind Framework library provides animated frame and navigation controls for WPF applications.</b>
+<b>The Dennkind Framework library provides animated frame and navigation controls for WPF applications. (Documentation in progress)</b>
 
 ![Dennkind Framework Demo App](http://www.dennkind.com/files/dennkindFrameworkDemoApp.png)
 
@@ -50,10 +50,13 @@ Try the demo app: [Dennkind Framework Demo App](https://github.com/Dennkind/Denn
 ## NuGet Packages
 Consume the [Dennkind Framework as NuGet](https://www.nuget.org/packages/Dennkind.Framework/1.2.0):<br />
 
-### Version 1.2.0 (Release):
-https://www.nuget.org/packages/Dennkind.Framework/1.2.0
+### Version 1.2.1 (Release):
+https://www.nuget.org/packages/Dennkind.Framework/1.2.1
 
 ## Changelog:
+### Version 1.2.1 (Release):
+- New control added: NotificationControl
+
 ### Version 1.2.0 (Release):
 - New controls added: DialogControl, OverlayControl, ProgressControl and SplashscreenControl
 
