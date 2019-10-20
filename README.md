@@ -45,7 +45,7 @@ Hide the controls by calling the FadeOut method:<br />
 <code>applicationFrameControl.Navigation.FadeOut();</code><br />
 
 ## Demo App
-Try the demo app: [Dennkind Framework Demo App](https://github.com/Dennkind/Dennkind-Framework-Demo)
+Try the demo app: [Dennkind Framework Demo App](https://github.com/Dennkind/Dennkind-Framework-Demo) (outdated: new version comming soon)
 
 ## NuGet Packages
 Consume the [Dennkind Framework as NuGet](https://www.nuget.org/packages/Dennkind.Framework/1.2.0):<br />
