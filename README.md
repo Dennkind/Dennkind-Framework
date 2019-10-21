@@ -1,6 +1,8 @@
 # Dennkind-Framework
 [![CodeFactor](https://www.codefactor.io/repository/github/dennkind/dennkind-framework/badge/master)](https://www.codefactor.io/repository/github/dennkind/dennkind-framework/overview/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Dennkind/Dennkind-Framework/blob/master/LICENSE)
+[![NuGet-1.2.1](https://img.shields.io/badge/NuGet-v.1.2.1-green)](https://www.nuget.org/packages/Dennkind.Framework/1.2.1)
+[![NuGet-1.2.3-beta](https://img.shields.io/badge/NuGet-v.1.2.3--beta-orange)](https://www.nuget.org/packages/Dennkind.Framework/1.2.3-beta)
 
 ## Description
 <b>The Dennkind Framework library provides animated frame and navigation controls for WPF applications. (Documentation in progress)</b>
