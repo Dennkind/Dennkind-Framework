@@ -1,5 +1,6 @@
 # Dennkind-Framework
 [![CodeFactor](https://www.codefactor.io/repository/github/dennkind/dennkind-framework/badge/master)](https://www.codefactor.io/repository/github/dennkind/dennkind-framework/overview/master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Dennkind/Dennkind-Framework/blob/master/LICENSE)
 
 ## Description
 <b>The Dennkind Framework library provides animated frame and navigation controls for WPF applications. (Documentation in progress)</b>
