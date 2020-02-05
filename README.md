@@ -7,8 +7,6 @@
 ## Description
 <b>The Dennkind Framework library provides animated frame and navigation controls for WPF applications. (Documentation in progress)</b>
 
-![Dennkind Framework Demo App](http://www.dennkind.com/files/dennkindFrameworkDemoApp.png)
-
 ## Usage
 1. Add the Dennkind.Framework.WPF.Controls namespace:<br />
 <code>xmlns:dennkind="clr-namespace:Dennkind.Framework.WPF.Controls;assembly=Dennkind.Framework</code>
