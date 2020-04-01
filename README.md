@@ -18,7 +18,7 @@
 <code>applicationFrameControl.HeaderLogo = "Dennkind";</code><br />
 <code>applicationFrameControl.HeaderTitle = "Framework Demo";</code><br />
 <code>applicationFrameControl.FooterVersion = "Dennkind Framework Demo v.1.0.0";</code><br />
-<code>applicationFrameControl.FooterCopyright = "Copyright © Lukas Koch 2019";</code>
+<code>applicationFrameControl.FooterCopyright = "Copyright © Lukas Koch";</code>
 
 4. Add your pages to the ApplicationFrameControl:<br />
 <code>applicationFrameControl.AddPage(new DashboardPage(){ Name = "dashboardPage" }, dashboardIcon);</code><br />
